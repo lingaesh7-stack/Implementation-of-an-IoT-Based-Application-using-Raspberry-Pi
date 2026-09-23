@@ -27,11 +27,12 @@ To implement an IoT-based environmental monitoring application using Raspberry P
 
 ---
 
-**To upload Wokwi circuit diagram**
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/fbea9584-e923-4263-9835-c9d511031fb7" />
+
 
 ---
 
-# Circuit Connections
+
 
 
 
@@ -134,11 +135,46 @@ The LED is used as a local status indicator. It turns ON when the measured tempe
 ---
 
 # Program
+```
+from machine import Pin
+import dht
+import time
+
+sensor = dht.DHT22(Pin(15))
+
+led = Pin(14, Pin.OUT)
 
 
-# Observation
+THRESHOLD = 30
 
+while True:
+    try:
+        sensor.measure()
 
+        temperature = sensor.temperature()
+        humidity = sensor.humidity()
+
+        print("Temperature:", temperature, "°C")
+        print("Humidity:", humidity, "%")
+
+        if temperature > THRESHOLD:
+            led.value(1)
+            print("LED: ON - High Temperature")
+        else:
+            led.value(0)
+            print("LED: OFF - Normal Temperature")
+
+        print("----------------------")
+
+    except Exception as e:
+        print("Sensor Error:", e)
+
+    time.sleep(2)
+```
+
+# Output
+
+<img width="1343" height="1600" alt="WhatsApp Image 2026-09-23 at 1 37 23 PM" src="https://github.com/user-attachments/assets/a4ae6116-acaa-454b-88e7-2f37bacbbdcd" />
 
 # Result
 
