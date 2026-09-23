@@ -174,7 +174,7 @@ while True:
 
 # Output
 
-<img width="1343" height="1600" alt="WhatsApp Image 2026-09-23 at 1 37 23 PM" src="https://github.com/user-attachments/assets/a4ae6116-acaa-454b-88e7-2f37bacbbdcd" />
+![Output](exp10.jpeg)
 
 # Result
 
